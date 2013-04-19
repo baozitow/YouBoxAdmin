@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="Beans.Admin" table="admin">
+	
+		<id name="adminId" type="int" unsaved-value="null">
+			<column name="admin_id" sql-type="int" not-null="true" />
+			<generator class="increment" />
+		</id>
+		
+		<property name="username">
+			<column name="admin_userName" sql-type="varchar(45)"></column>
+		</property>
+		
+		<property name="password">
+			<column name="admin_psd" sql-type="varchar(100)"></column>
+		</property>
+		
+	</class>
+</hibernate-mapping>

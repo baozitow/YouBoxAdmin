@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+<constant name="struts.devMode" value="true" />
+
+   <package name="Action" extends="struts-default">
+   <interceptors>
+   	<interceptor name="loginedCheck" class="Interceptor.LoginedCheckInterceptor"/>
+   </interceptors>
+   
+  <global-results>
+    <result name="login">/login.jsp</result>
+  </global-results>
+  
+      <action name="login" class="Action.AdminAction" method="login">
+      		<result name="success">/panel.jsp</result>
+      		<result name="fail">/login.jsp</result>
+      		<result name="register">/register.jsp</result>
+      </action>
+      
+      <action name="boxList" class="Action.BoxAction" method="boxList">
+      	<result name="boxList">/Page/sub_terminals_boxsstate.jsp</result>
+      </action>
+      
+      <action name="editTerminal" class="Action.TerminalAction" method="edit">
+      	<result name="success">/Page/sub_nodes_edit.html</result>
+      </action>
+      
+      <action name="getPackageDetailsByIdAction" class="Action.getPackageDetailsByIdAction" method="getPackageById">
+      	<result name="success">/Page/sub_terminals_packinfo.jsp</result>
+      </action>
+      
+      
+      <action name="getPackageDetailsByBoxNumAction" class="Action.getPackageDetailsByBoxNumAction">
+      	<result name="success">/Page/sub_terminals_packinfo.jsp</result>
+      	
+      	<interceptor-ref name="loginedCheck"></interceptor-ref>
+      	<interceptor-ref name="defaultStack"></interceptor-ref>
+      </action>
+      
+     <action name="setBoxAvailableAction" class="Action.setBoxAvailableAction">
+      	<result name="success">/index.jsp</result>
+      	<result name="fail">/index.jsp</result>
+      	
+      	<interceptor-ref name="loginedCheck"></interceptor-ref>
+      	<interceptor-ref name="defaultStack"></interceptor-ref>
+      </action>
+   </package>
+</struts>

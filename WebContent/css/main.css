@@ -1,0 +1,41 @@
+@CHARSET "UTF-8";
+
+body {
+	magrin:0px;
+	padding:0px;
+}
+
+.search_input
+{
+	width:200px;
+	height:18px;
+}
+.search_btn
+{
+	font-family: "宋体";
+	font-size: 12px;
+	color: #174B73;
+	height: 20px;
+	width: 45px;
+	background-image: url(../images/button04.gif);
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+
+。search_showall
+{
+	font-family: "宋体";
+	font-size: 12px;
+	color: #174B73;
+	height: 20px;
+	width: 75px;
+	background-image: url(../images/button09.gif);
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+}
+	
+
