@@ -20,21 +20,16 @@ public class AdminDao {
 	
 	public Admin get(String username,String password){
 		Session session=MySessionFactory.currentSession();
-		tr=session.beginTransaction();
 		Admin admin=null;
-		
-		String getUserSql="select * from admin where admin_userName='"+username+"' and admin_psd='"+password+"'";
-		Query q= session.createSQLQuery(getUserSql).addEntity(Admin.class);		
-		List result=q.list();
+
+		tr=session.beginTransaction();
+		Criteria c=session.createCriteria(Admin.class);
+		c.add(Restrictions.eq("username",username));
+		c.add(Restrictions.eq("password",password));
+		List result=c.list();
 		if(result.iterator().hasNext()){
 			admin= (Admin) result.iterator().next();
 		}
-		
-		
-//		Criteria c=session.createCriteria(Admin.class);
-//		c.add(Restrictions.eq("username",username));
-//		c.add(Restrictions.eq("password",password));
-//		List result=c.list();
 		
 		tr.commit();
 		

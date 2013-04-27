@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.service.ServiceRegistryBuilder;
 
-public class MySessionFactory {
+public class CopyOfMySessionFactory {
 	// 定义一个静态字符串变量存放Hibernate的配置文件名idgfaa
 	private static String CONFIG_FILE_LOCATION = "/hibernate.cfg.xml";
 	// 创建一个线程局部变量对象
@@ -28,8 +28,8 @@ public class MySessionFactory {
 					
 //					ServiceRegistry serviceRegistry =new ServiceRegistryBuilder().applySettings(cfg.getProperties()).buildServiceRegistry();
 //					sessionFactory = cfg.configure().buildSessionFactory(serviceRegistry);
-//					
-//				     //根据配置文件，配置Hibernate  
+					
+				     //根据配置文件，配置Hibernate  
 				     cfg.configure(CONFIG_FILE_LOCATION);  
 				     //通过Configuration对象创建SessionFactory对象  
 				     sessionFactory = cfg.buildSessionFactory();  
@@ -58,6 +58,6 @@ public class MySessionFactory {
 	}
 
 	// 构造方法
-	private MySessionFactory() {
+	private CopyOfMySessionFactory() {
 	}
 }

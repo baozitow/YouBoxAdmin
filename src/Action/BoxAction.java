@@ -10,12 +10,13 @@ import com.opensymphony.xwork2.ActionSupport;
 public class BoxAction extends ActionSupport{
 	
 	ArrayList<Box> boxes;
-	
+	public int terminalId;
 
 
 	public String boxList(){
 		BoxDao boxDao=new BoxDao();
-	    boxes=(ArrayList<Box>) boxDao.boxStatusInThisTerminal(3);
+	    boxes=(ArrayList<Box>) boxDao.boxStatusInThisTerminal(terminalId);
+		System.out.println("terminalID: "+terminalId);
 		
 		return "boxList";
 	}
@@ -31,4 +32,15 @@ public class BoxAction extends ActionSupport{
 		this.boxes = boxes;
 	}
 
+
+	public int getTerminalId() {
+		return terminalId;
+	}
+
+
+	public void setTerminalId(int terminalId) {
+		this.terminalId = terminalId;
+	}
+
+	
 }

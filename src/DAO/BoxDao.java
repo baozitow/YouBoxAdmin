@@ -6,20 +6,28 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
 
-import Utils.MySessionFactory;
+import Utils.HibernateUtil;
+
+
 import Beans.Box;
 import Beans.Package;
 
 public class BoxDao {
-
+	
+	private SessionFactory sessionFactory;
+	
+	public BoxDao(){
+		sessionFactory=HibernateUtil.getSessionFactory();
+	}
 	Transaction tr=null;
 	
 	public List<Box> boxStatusInThisTerminal(int terminalId){
 		
-		Session session=MySessionFactory.currentSession();
+		Session session=sessionFactory.openSession();
 		tr=session.beginTransaction();
 		List<Box> boxes=null;
 		
@@ -29,17 +37,33 @@ public class BoxDao {
 		
 		tr.commit();
 		
-		MySessionFactory.closeSession();
+		session.close();
 		
 	
 		
 		return boxes;
 	}
 	
+	public boolean addBox(int terminalID,int boxNum,int boxType){
+		
+		Session session=sessionFactory.openSession();
+		tr=session.beginTransaction();
+			Box box=new Box();
+			box.setBoxNum(boxNum);
+			box.setBoxStatus(0);
+			box.setBoxType(boxType);
+			box.setTerminalId(terminalID);
+			session.save(box);
+		tr.commit();
+		session.close();
+		return true;
+	
+	}
+	
 	
 	public boolean setBoxAvailable(int terminalId,int boxNum){
 		
-		Session session=MySessionFactory.currentSession();
+		Session session=sessionFactory.openSession();
 		tr=session.beginTransaction();
 		List<Box> boxes=null;
 		List<Package> packages=null;
@@ -74,14 +98,14 @@ public class BoxDao {
 				}
 			}else{
 				
-				MySessionFactory.closeSession();
+				session.close();
 				return false;
 			}
 			
 			
 		}else{
 
-			MySessionFactory.closeSession();
+			session.close();
 			return false;
 			
 		}
@@ -90,7 +114,7 @@ public class BoxDao {
 
 		
 		tr.commit();
-		MySessionFactory.closeSession();
+		session.close();
 		
 		return true;
 		

@@ -37,6 +37,7 @@
 		
 		<mapping class="Beans.Package"/>
 		<mapping class="Beans.Box"/>
+		<mapping class="Beans.Terminal"/>
 
 
 	</session-factory>

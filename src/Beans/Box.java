@@ -42,15 +42,16 @@ public class Box {
 	public void setBoxType(int boxType) {
 		this.boxType = boxType;
 		
-		if(boxType==1){
-			this.boxTypeName = "≥¨¥Û";
-		}else if(boxType==2){
-			this.boxTypeName ="¥Û";
-		}else if(boxType==3){
-			this.boxTypeName="÷–";
-		}else{
-			this.boxTypeName="–°";
-		}
+	    this.boxTypeName="Â∞è";
+//		if(boxType==1){
+//			this.boxTypeName = "ÔøΩÔøΩÔøΩÔøΩ";
+//		}else if(boxType==2){
+//			this.boxTypeName ="ÔøΩÔøΩ";
+//		}else if(boxType==3){
+//			this.boxTypeName="ÔøΩÔøΩ";
+//		}else{
+//			this.boxTypeName="–°";
+//		}
 	}
 	
 	@Column(name="boxStatus_status")

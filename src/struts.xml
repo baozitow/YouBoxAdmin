@@ -40,12 +40,24 @@
       	<interceptor-ref name="defaultStack"></interceptor-ref>
       </action>
       
-     <action name="setBoxAvailableAction" class="Action.setBoxAvailableAction">
+     <action name="setBoxAvailableAction" class="Action.setBoxAvailableAction" >
       	<result name="success">/index.jsp</result>
       	<result name="fail">/index.jsp</result>
       	
       	<interceptor-ref name="loginedCheck"></interceptor-ref>
       	<interceptor-ref name="defaultStack"></interceptor-ref>
       </action>
+      
+      
+      
+      
+      
+      <!-- Terminal -->
+       <action name="returnAllTerminals" class="Action.TerminalAction" method="returnAllTerminals">
+      		<result name="success">/Page/sub_terminals.jsp</result>
+      </action>
+      
+      
+      
    </package>
 </struts>
